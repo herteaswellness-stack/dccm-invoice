@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+  <!-- Background rounded square -->
+  <rect width="192" height="192" rx="38" fill="#1e3a5f"/>
+  <!-- Document body -->
+  <rect x="44" y="32" width="96" height="128" rx="8" fill="white"/>
+  <!-- Folded corner -->
+  <polygon points="116,32 140,56 116,56" fill="#cbd5e0"/>
+  <!-- "INVOICE" label bar -->
+  <rect x="44" y="32" width="96" height="22" rx="8" fill="#2c5282"/>
+  <rect x="44" y="44" width="96" height="10" fill="#2c5282"/>
+  <!-- White text area on label -->
+  <rect x="54" y="37" width="60" height="8" rx="2" fill="white" opacity="0.9"/>
+  <!-- Dollar sign circle -->
+  <circle cx="96" cy="100" r="22" fill="#ebf8ff"/>
+  <text x="96" y="107" font-family="Arial,sans-serif" font-weight="900" font-size="26" fill="#1e3a5f" text-anchor="middle">$</text>
+  <!-- Bottom lines -->
+  <rect x="58" y="136" width="76" height="6" rx="3" fill="#a0aec0"/>
+  <rect x="68" y="148" width="56" height="6" rx="3" fill="#cbd5e0"/>
+</svg>
