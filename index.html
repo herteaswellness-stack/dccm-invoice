@@ -514,6 +514,109 @@
 </div>
 
 <script>
+  /* ── Generate App Icon ── */
+  (function(){
+    const c = document.createElement('canvas');
+    c.width = 180; c.height = 180;
+    const x = c.getContext('2d');
+    // Background
+    x.beginPath(); x.roundRect(0,0,180,180,36); x.fillStyle='#1e3a5f'; x.fill();
+    // White doc
+    x.beginPath(); x.roundRect(38,28,88,114,8); x.fillStyle='#ffffff'; x.fill();
+    // Folded corner
+    x.beginPath(); x.moveTo(104,28); x.lineTo(126,50); x.lineTo(104,50); x.closePath(); x.fillStyle='#cbd5e0'; x.fill();
+    // Header bar
+    x.beginPath(); x.roundRect(38,28,88,20,[8,8,0,0]); x.fillStyle='#2c5282'; x.fill();
+    // White line on header
+    x.fillStyle='rgba(255,255,255,0.85)'; x.beginPath(); x.roundRect(48,34,44,5,2); x.fill();
+    // Dollar circle
+    x.beginPath(); x.arc(82,98,20,0,Math.PI*2); x.fillStyle='#ebf8ff'; x.fill();
+    x.fillStyle='#1e3a5f'; x.font='bold 26px Arial'; x.textAlign='center'; x.textBaseline='middle'; x.fillText('
+  function syncFields(srcId, tgtId) {
+    const s = document.getElementById(srcId);
+    const t = document.getElementById(tgtId);
+    if (!s || !t) return;
+    s.addEventListener('input', () => t.innerText = s.innerText);
+    t.addEventListener('input', () => s.innerText = t.innerText);
+  }
+  syncFields('inv-date',   'inv-date2');
+  syncFields('inv-amount', 'inv-amount2');
+
+  /* ── Checkbox highlight ── */
+  function toggleOpt(cb, id) {
+    document.getElementById(id).classList.toggle('checked', cb.checked);
+  }
+  // init state for pre-checked
+  document.querySelectorAll('.payment-opt input[type="checkbox"]').forEach(cb => {
+    document.getElementById(cb.closest('.payment-opt').id).classList.toggle('checked', cb.checked);
+  });
+
+  /* ── Confirm Print ── */
+  function showConfirm() {
+    const num    = document.getElementById('inv-num').innerText.trim();
+    const date   = document.getElementById('inv-date').innerText.trim();
+    const amount = document.getElementById('inv-amount').innerText.trim();
+    const client = document.getElementById('client-name').innerText.trim();
+    const addr   = document.getElementById('client-addr').innerText.trim();
+    const checked = [...document.querySelectorAll('.payment-opt input:checked')]
+                      .map(cb => cb.closest('.payment-opt').querySelector('.opt-text').innerText.trim());
+
+    document.getElementById('confirm-summary').innerHTML = `
+      <strong>Invoice #:</strong> ${num || '—'}<br>
+      <strong>Date:</strong> ${date || '—'}<br>
+      <strong>Client:</strong> ${client || '—'}<br>
+      <strong>Address:</strong> ${addr || '—'}<br>
+      <strong>Amount Due:</strong> ${amount || '0.00'}<br>
+      <strong>Payment For:</strong><br>
+      ${checked.length ? checked.map(t => `• ${t}`).join('<br>') : '<span style="color:#e53e3e">⚠️ No payment type selected!</span>'}
+    `;
+    document.getElementById('confirm-overlay').classList.add('show');
+  }
+  function hideConfirm() {
+    document.getElementById('confirm-overlay').classList.remove('show');
+  }
+  function confirmPrint() {
+    hideConfirm();
+    window.print();
+  }
+
+  /* ── Reset / New Invoice ── */
+  function resetForm() {
+    if (!confirm('Start a new invoice? Current data will be cleared.')) return;
+    // Reset editable text fields
+    const defaults = {
+      'inv-num':      '',
+      'inv-date':     '',
+      'inv-date2':    '',
+      'inv-amount':   '0.00',
+      'inv-amount2':  '0.00',
+      'client-name':  '',
+      'client-addr':  '',
+    };
+    Object.entries(defaults).forEach(([id, val]) => {
+      const el = document.getElementById(id);
+      if (el) el.innerText = val;
+    });
+    // Reset notes
+    document.querySelector('.notes-area').innerText = '';
+    // Uncheck all
+    document.querySelectorAll('.payment-opt input[type="checkbox"]').forEach(cb => {
+      cb.checked = false;
+      cb.closest('.payment-opt').classList.remove('checked');
+    });
+  }
+</script>
+</body>
+</html>
+,82,99);
+    // Bottom lines
+    x.fillStyle='#a0aec0'; x.beginPath(); x.roundRect(50,128,64,5,2); x.fill();
+    x.beginPath(); x.roundRect(58,138,48,4,2); x.fill();
+    const url = c.toDataURL('image/png');
+    document.getElementById('appIcon').href = url;
+    document.getElementById('favicon').href = url;
+  })();
+
   /* ── Sync date & amount fields ── */
   function syncFields(srcId, tgtId) {
     const s = document.getElementById(srcId);
