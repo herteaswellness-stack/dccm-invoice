@@ -1,80 +1,593 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.6">
-  <style type="text/css">
-    body {background-color: #d5dce7}
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #5e6c84; -webkit-text-stroke: #5e6c84}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 13.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #3a4355}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 13.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #172b4c}
-    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 17.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff}
-    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.5px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff}
-    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: right; font: 38.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff}
-    p.p7 {margin: 0.0px 0.0px 0.0px 0.0px; font: 10.0px 'Helvetica Neue'; color: #5e6c84; -webkit-text-stroke: #5e6c84}
-    p.p8 {margin: 0.0px 0.0px 0.0px 0.0px; font: 15.0px 'Helvetica Neue'; color: #141821; -webkit-text-stroke: #141821}
-    p.p9 {margin: 0.0px 0.0px 0.0px 0.0px; font: 22.0px 'Helvetica Neue'; color: #172b4c; -webkit-text-stroke: #172b4c}
-    p.p10 {margin: 0.0px 0.0px 0.0px 0.0px; font: 17.0px 'Helvetica Neue'; color: #141821; -webkit-text-stroke: #141821}
-    p.p11 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.5px 'Helvetica Neue'; color: #3a4355; -webkit-text-stroke: #3a4355}
-    p.p12 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'Helvetica Neue'; color: #223f6f; -webkit-text-stroke: #223f6f}
-    p.p13 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'Helvetica Neue'; -webkit-text-stroke: #000000; min-height: 13.0px}
-    p.p14 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.5px 'Helvetica Neue'; color: #222938; -webkit-text-stroke: #222938}
-    p.p15 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff}
-    p.p16 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff}
-    p.p17 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #6d6d6d; -webkit-text-stroke: #6d6d6d; min-height: 15.0px}
-    p.p18 {margin: 0.0px 0.0px 0.0px 0.0px; font: 26.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff}
-    p.p19 {margin: 0.0px 0.0px 0.0px 0.0px; font: 28.0px 'Helvetica Neue'; color: #172b4c; -webkit-text-stroke: #172b4c}
-    p.p20 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'; color: #222938; -webkit-text-stroke: #222938}
-    p.p21 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'Helvetica Neue'; color: #8f9eb3; -webkit-text-stroke: #8f9eb3}
-    p.p22 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Helvetica Neue'; color: #141821; -webkit-text-stroke: #141821; background-color: #172b4c; min-height: 15.0px}
-    span.s1 {font: 12.0px '.Apple Color Emoji UI'; font-kerning: none}
-    span.s2 {font-kerning: none}
-    span.s3 {font: 13.0px '.Apple Color Emoji UI'; font-kerning: none}
-    span.s4 {font-kerning: none; background-color: #ffffff}
-    span.s5 {font-kerning: none; background-color: #f5f9fb}
-    span.s6 {font-kerning: none; background-color: #172b4c}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invoice — Derek Chiang Construction Management</title>
+  <link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ── Reset ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* ── Page ── */
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #dde3ec;
+    min-height: 100vh;
+    padding: 32px 16px 60px;
+    color: #1a202c;
+  }
+
+  /* ── Toolbar ── */
+  #toolbar {
+    max-width: 820px;
+    margin: 0 auto 18px;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  #toolbar button {
+    padding: 9px 22px;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: opacity .15s;
+  }
+  #toolbar button:hover { opacity: .85; }
+  #btn-new  { background: #4a5568; color: #fff; }
+  #btn-print{ background: #1e3a5f; color: #fff; }
+
+  /* ── Confirm Modal ── */
+  #confirm-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.55);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+  }
+  #confirm-overlay.show { display: flex; }
+  #confirm-box {
+    background: white;
+    border-radius: 12px;
+    padding: 32px 36px;
+    max-width: 420px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(0,0,0,.3);
+  }
+  #confirm-box h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1e3a5f;
+    margin-bottom: 16px;
+  }
+  #confirm-box .confirm-info {
+    font-size: 13.5px;
+    color: #4a5568;
+    line-height: 1.7;
+    background: #f7fafc;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    border-left: 4px solid #2c5282;
+  }
+  #confirm-box .confirm-info strong { color: #1e3a5f; }
+  #confirm-box .btn-row {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+  }
+  #confirm-box button {
+    padding: 10px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+  }
+  #btn-cancel-confirm { background: #e2e8f0; color: #4a5568; }
+  #btn-confirm-print  { background: #1e3a5f; color: white; }
+  #toolbar .hint {
+    font-size: 12px;
+    color: #718096;
+    margin-right: auto;
+  }
+
+  /* ── Invoice card ── */
+  #invoice {
+    max-width: 820px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 6px 30px rgba(0,0,0,.12);
+    overflow: hidden;
+  }
+
+  /* ── Header band ── */
+  .inv-header {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+    color: #fff;
+    padding: 32px 44px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .inv-header .co-name {
+    font-size: 17px;
+    font-weight: 900;
+    letter-spacing: .4px;
+    line-height: 1.3;
+    color: #e07020;
+  }
+  .inv-header .co-sub {
+    font-size: 12.5px;
+    opacity: .85;
+    line-height: 1.7;
+    margin-top: 6px;
+  }
+  .inv-header .inv-word {
+    font-size: 38px;
+    font-weight: 800;
+    font-style: italic;
+    letter-spacing: 5px;
+    text-align: right;
+    white-space: nowrap;
+    opacity: .95;
+  }
+
+  /* ── Body ── */
+  .inv-body { padding: 36px 44px; }
+
+  /* ── Meta row: invoice# + date + amount ── */
+  .meta-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e2e8f0;
+  }
+  .meta-cell .lbl {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .9px;
+    color: #718096;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+  .meta-cell .val {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a202c;
+  }
+  .meta-cell .val.big { font-size: 22px; color: #1e3a5f; }
+
+  /* ── Editable fields ── */
+  [contenteditable="true"] {
+    outline: none;
+    border-bottom: 1.5px dashed #a0aec0;
+    display: inline-block;
+    min-width: 80px;
+    padding: 1px 3px;
+    border-radius: 2px;
+    transition: background .15s, border-color .15s;
+  }
+  [contenteditable="true"]:hover,
+  [contenteditable="true"]:focus {
+    background: #ebf4ff;
+    border-color: #2c5282;
+  }
+
+  /* ── Client section ── */
+  .client-block {
+    background: #f7fafc;
+    border-left: 4px solid #2c5282;
+    border-radius: 0 6px 6px 0;
+    padding: 14px 20px;
+    margin-bottom: 30px;
+  }
+  .client-block .lbl {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .9px;
+    color: #718096;
+    font-weight: 700;
+    margin-bottom: 7px;
+  }
+  .client-name-field {
+    font-size: 17px;
+    font-weight: 700;
+    min-width: 220px;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .client-addr-field {
+    font-size: 13.5px;
+    color: #4a5568;
+    min-width: 300px;
+    display: block;
+  }
+
+  /* ── Payment For ── */
+  .section-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .9px;
+    color: #2c5282;
+    font-weight: 700;
+    margin-bottom: 12px;
+    padding-bottom: 7px;
+    border-bottom: 2px solid #e2e8f0;
+  }
+  .payment-options { margin-bottom: 32px; }
+  .payment-opt {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 12px 16px;
+    border-radius: 7px;
+    margin-bottom: 8px;
+    border: 1.5px solid #e2e8f0;
+    cursor: pointer;
+    transition: background .15s, border-color .15s;
+  }
+  .payment-opt:hover { background: #f0f7ff; border-color: #bee3f8; }
+  .payment-opt.checked {
+    background: #ebf8ff;
+    border-color: #63b3ed;
+  }
+  .payment-opt input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    accent-color: #2c5282;
+    cursor: pointer;
+  }
+  .payment-opt .opt-text {
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: #2d3748;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  /* ── Amount block ── */
+  .amount-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 30px;
+  }
+  .amount-box {
+    background: #1e3a5f;
+    color: #fff;
+    border-radius: 8px;
+    padding: 18px 28px;
+    min-width: 260px;
+  }
+  .amount-box .a-lbl {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .9px;
+    opacity: .75;
+    margin-bottom: 5px;
+  }
+  .amount-box .a-date {
+    font-size: 13px;
+    opacity: .85;
+    margin-bottom: 12px;
+  }
+  .amount-box .a-divider {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,.2);
+    margin-bottom: 12px;
+  }
+  .amount-box .a-total-lbl {
+    font-size: 13px;
+    opacity: .8;
+    margin-bottom: 3px;
+  }
+  .amount-box .a-total-val {
+    font-size: 26px;
+    font-weight: 700;
+  }
+  .amount-box [contenteditable] {
+    border-bottom-color: rgba(255,255,255,.4);
+    color: #fff;
+  }
+  .amount-box [contenteditable]:hover,
+  .amount-box [contenteditable]:focus {
+    background: rgba(255,255,255,.15);
+    border-bottom-color: #fff;
+  }
+
+  /* ── Notes ── */
+  .notes-area {
+    font-size: 12px;
+    color: #718096;
+    line-height: 1.6;
+    background: #f7fafc;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 32px;
+    min-height: 36px;
+  }
+  .notes-area[contenteditable]:empty::before {
+    content: 'Notes / payment instructions…';
+    color: #a0aec0;
+  }
+
+  /* ── Signature ── */
+  .sig-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 20px;
+    border-top: 1px solid #e2e8f0;
+  }
+  .sig-block {}
+  .sig-name {
+    font-family: 'Homemade Apple', cursive;
+    font-size: 28px;
+    color: #1e3a5f;
+    line-height: 1.1;
+    pointer-events: none;
+    user-select: none;
+  }
+  .sig-line {
+    border-top: 1px solid #a0aec0;
+    padding-top: 5px;
+    margin-top: 2px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #2d3748;
+    min-width: 220px;
+  }
+  .sig-role {
+    font-size: 12px;
+    color: #718096;
+    margin-top: 2px;
+  }
+  .thank-you {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #a0aec0;
+  }
+
+  /* ── Footer bar ── */
+  .inv-footer-bar {
+    background: #1e3a5f;
+    height: 7px;
+  }
+
+  /* ═══════════════════════════════
+     PRINT STYLES
+  ═══════════════════════════════ */
+  @media print {
+    body { background: #fff; padding: 0; }
+    #toolbar { display: none !important; }
+    #invoice { box-shadow: none; border-radius: 0; max-width: 100%; }
+    .inv-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    [contenteditable="true"] {
+      border-bottom: 1px solid #ccc;
+      background: transparent !important;
+    }
+    .payment-opt { border: 1px solid #ddd; }
+    .payment-opt.checked { background: #f0f7ff; }
+    @page { margin: 0.5in; size: letter; }
+  }
+</style>
 </head>
 <body>
-<p class="p1"><span class="s1">💡</span><span class="s2"> Click any field to edit  |  Check boxes to mark payment type</span></p>
-<p class="p2"><span class="s3">🆕</span><span class="s2"> New Invoice</span></p>
-<p class="p3"><span class="s3">🖨️</span><span class="s2"> Print / Save PDF</span></p>
-<p class="p4"><span class="s4">DEREK CHIANG CONSTRUCTION MANAGEMENT</span></p>
-<p class="p5"><span class="s4">320 Brockley Road</span></p>
-<p class="p5"><span class="s4">Rochester, NY 14609</span></p>
-<p class="p5"><span class="s4">585-520-7331</span></p>
-<p class="p6"><span class="s4">INVOICE</span></p>
-<p class="p7"><span class="s4">INVOICE NUMBER</span></p>
-<p class="p8"><span class="s4">7032026</span></p>
-<p class="p7"><span class="s4">AMOUNT DUE AS OF</span></p>
-<p class="p8"><span class="s4">07/05/26</span></p>
-<p class="p7"><span class="s4">AMOUNT DUE</span></p>
-<p class="p9"><span class="s4">$900.00</span></p>
-<p class="p7"><span class="s5">BILL TO — CLIENT</span></p>
-<p class="p10"><span class="s5">Cooper, Gary</span></p>
-<p class="p11"><span class="s5">114 Bradburn St., Rochester, NY 14619</span></p>
-<p class="p12"><span class="s4">PAYMENT FOR  (CHECK ONE THAT APPLIES)</span></p>
-<p class="p13"><span class="s2"></span><br></p>
-<p class="p14"><span class="s4">Initial assessment. Pictures &amp; paperwork. Specification and bid document preparation. Contract signing.</span></p>
-<p class="p13"><span class="s2"></span><br></p>
-<p class="p14"><span class="s4">Interim inspections, change order (if any), final inspection, pictures and paperwork.</span></p>
-<p class="p13"><span class="s2"></span><br></p>
-<p class="p14"><span class="s4">Conduct a drive-by inspection and document assigned work items through photography.</span></p>
-<p class="p13"><span class="s2"></span><br></p>
-<p class="p14"><span class="s4">Withdrawn from the program.</span></p>
-<p class="p15"><span class="s6">AMOUNT DUE AS OF</span></p>
-<p class="p16"><span class="s6">07/05/26</span></p>
-<p class="p17"><span class="s2"></span><br></p>
-<p class="p16"><span class="s6">Total Amount Due</span></p>
-<p class="p18"><span class="s6">$900.00</span></p>
-<p class="p1"><span class="s5">Please make checks payable to Derek Chiang Construction Management. Contact 585-520-7331 for questions regarding this invoice.</span></p>
-<p class="p19"><span class="s4">Derek Chiang</span></p>
-<p class="p20"><span class="s4">Derek Chiang</span></p>
-<p class="p1"><span class="s4">Construction Manager, Sheen Housing</span></p>
-<p class="p21"><span class="s4">THANK YOU FOR YOUR BUSINESS</span></p>
-<p class="p22"><span class="s2"></span><br></p>
+
+<!-- ── Toolbar ── -->
+<div id="toolbar">
+  <span class="hint">💡 Click any field to edit &nbsp;|&nbsp; Check boxes to mark payment type</span>
+  <button id="btn-new" onclick="resetForm()">🆕 New Invoice</button>
+  <button id="btn-print" onclick="showConfirm()">🖨️ Print / Save PDF</button>
+</div>
+
+<!-- ══════════════════════════════
+     INVOICE
+══════════════════════════════ -->
+<div id="invoice">
+
+  <!-- Header -->
+  <div class="inv-header">
+    <div>
+      <div class="co-name">DEREK CHIANG CONSTRUCTION MANAGEMENT</div>
+      <div class="co-sub">
+        320 Brockley Road<br>
+        Rochester, NY 14609<br>
+        585-520-7331
+      </div>
+    </div>
+    <div class="inv-word">INVOICE</div>
+  </div>
+
+  <!-- Body -->
+  <div class="inv-body">
+
+    <!-- Meta strip -->
+    <div class="meta-strip">
+      <div class="meta-cell">
+        <div class="lbl">Invoice Number</div>
+        <div class="val">
+          <span id="inv-num" contenteditable="true">7032026</span>
+        </div>
+      </div>
+      <div class="meta-cell">
+        <div class="lbl">Amount Due As Of</div>
+        <div class="val">
+          <span id="inv-date" contenteditable="true">07/05/26</span>
+        </div>
+      </div>
+      <div class="meta-cell">
+        <div class="lbl">Amount Due</div>
+        <div class="val big">
+          $<span id="inv-amount" contenteditable="true">900.00</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Client -->
+    <div class="client-block">
+      <div class="lbl">Bill To — Client</div>
+      <span id="client-name" class="client-name-field" contenteditable="true">Cooper, Gary</span>
+      <span id="client-addr" class="client-addr-field" contenteditable="true">114 Bradburn St., Rochester, NY 14619</span>
+    </div>
+
+    <!-- Payment For -->
+    <div class="payment-options">
+      <div class="section-title">Payment For &nbsp;(Check One That Applies)</div>
+
+      <label class="payment-opt" id="opt1">
+        <input type="checkbox" onchange="toggleOpt(this,'opt1')" checked>
+        <span class="opt-text">Initial assessment. Pictures &amp; paperwork. Specification and bid document preparation. Contract signing.</span>
+      </label>
+
+      <label class="payment-opt" id="opt2">
+        <input type="checkbox" onchange="toggleOpt(this,'opt2')">
+        <span class="opt-text">Interim inspections, change order (if any), final inspection, pictures and paperwork.</span>
+      </label>
+
+      <label class="payment-opt" id="opt3">
+        <input type="checkbox" onchange="toggleOpt(this,'opt3')">
+        <span class="opt-text">Conduct a drive-by inspection and document assigned work items through photography.</span>
+      </label>
+
+      <label class="payment-opt" id="opt4">
+        <input type="checkbox" onchange="toggleOpt(this,'opt4')">
+        <span class="opt-text">Withdrawn from the program.</span>
+      </label>
+    </div>
+
+    <!-- Amount box -->
+    <div class="amount-row">
+      <div class="amount-box">
+        <div class="a-lbl">Amount Due As Of</div>
+        <div class="a-date"><span contenteditable="true" id="inv-date2">07/05/26</span></div>
+        <hr class="a-divider">
+        <div class="a-total-lbl">Total Amount Due</div>
+        <div class="a-total-val">$<span id="inv-amount2" contenteditable="true">900.00</span></div>
+      </div>
+    </div>
+
+    <!-- Notes -->
+    <div class="notes-area" contenteditable="true">Please make checks payable to Derek Chiang Construction Management. Contact 585-520-7331 for questions regarding this invoice.</div>
+
+    <!-- Signature -->
+    <div class="sig-row">
+      <div class="sig-block">
+        <div class="sig-name">Derek Chiang</div>
+        <div class="sig-line">Derek Chiang</div>
+        <div class="sig-role">Construction Manager, Sheen Housing</div>
+      </div>
+      <div class="thank-you">Thank you for your business</div>
+    </div>
+
+  </div><!-- /inv-body -->
+
+  <div class="inv-footer-bar"></div>
+</div><!-- /invoice -->
+
+<!-- ── Confirm Print Modal ── -->
+<div id="confirm-overlay">
+  <div id="confirm-box">
+    <h3>🖨️ Confirm Before Printing</h3>
+    <div class="confirm-info" id="confirm-summary">
+      <!-- filled by JS -->
+    </div>
+    <div class="btn-row">
+      <button id="btn-cancel-confirm" onclick="hideConfirm()">✏️ Go Back & Edit</button>
+      <button id="btn-confirm-print" onclick="confirmPrint()">✅ Confirm & Print</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  /* ── Sync date & amount fields ── */
+  function syncFields(srcId, tgtId) {
+    const s = document.getElementById(srcId);
+    const t = document.getElementById(tgtId);
+    if (!s || !t) return;
+    s.addEventListener('input', () => t.innerText = s.innerText);
+    t.addEventListener('input', () => s.innerText = t.innerText);
+  }
+  syncFields('inv-date',   'inv-date2');
+  syncFields('inv-amount', 'inv-amount2');
+
+  /* ── Checkbox highlight ── */
+  function toggleOpt(cb, id) {
+    document.getElementById(id).classList.toggle('checked', cb.checked);
+  }
+  // init state for pre-checked
+  document.querySelectorAll('.payment-opt input[type="checkbox"]').forEach(cb => {
+    document.getElementById(cb.closest('.payment-opt').id).classList.toggle('checked', cb.checked);
+  });
+
+  /* ── Confirm Print ── */
+  function showConfirm() {
+    const num    = document.getElementById('inv-num').innerText.trim();
+    const date   = document.getElementById('inv-date').innerText.trim();
+    const amount = document.getElementById('inv-amount').innerText.trim();
+    const client = document.getElementById('client-name').innerText.trim();
+    const addr   = document.getElementById('client-addr').innerText.trim();
+    const checked = [...document.querySelectorAll('.payment-opt input:checked')]
+                      .map(cb => cb.closest('.payment-opt').querySelector('.opt-text').innerText.trim());
+
+    document.getElementById('confirm-summary').innerHTML = `
+      <strong>Invoice #:</strong> ${num || '—'}<br>
+      <strong>Date:</strong> ${date || '—'}<br>
+      <strong>Client:</strong> ${client || '—'}<br>
+      <strong>Address:</strong> ${addr || '—'}<br>
+      <strong>Amount Due:</strong> ${amount || '0.00'}<br>
+      <strong>Payment For:</strong><br>
+      ${checked.length ? checked.map(t => `• ${t}`).join('<br>') : '<span style="color:#e53e3e">⚠️ No payment type selected!</span>'}
+    `;
+    document.getElementById('confirm-overlay').classList.add('show');
+  }
+  function hideConfirm() {
+    document.getElementById('confirm-overlay').classList.remove('show');
+  }
+  function confirmPrint() {
+    hideConfirm();
+    window.print();
+  }
+
+  /* ── Reset / New Invoice ── */
+  function resetForm() {
+    if (!confirm('Start a new invoice? Current data will be cleared.')) return;
+    // Reset editable text fields
+    const defaults = {
+      'inv-num':      '',
+      'inv-date':     '',
+      'inv-date2':    '',
+      'inv-amount':   '0.00',
+      'inv-amount2':  '0.00',
+      'client-name':  '',
+      'client-addr':  '',
+    };
+    Object.entries(defaults).forEach(([id, val]) => {
+      const el = document.getElementById(id);
+      if (el) el.innerText = val;
+    });
+    // Reset notes
+    document.querySelector('.notes-area').innerText = '';
+    // Uncheck all
+    document.querySelectorAll('.payment-opt input[type="checkbox"]').forEach(cb => {
+      cb.checked = false;
+      cb.closest('.payment-opt').classList.remove('checked');
+    });
+  }
+</script>
 </body>
 </html>
